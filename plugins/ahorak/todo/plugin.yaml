@@ -1,0 +1,11 @@
+plugin:
+    name: 'ahorak.todo::lang.plugin.name'
+    description: 'ahorak.todo::lang.plugin.description'
+    author: ahorak
+    icon: oc-icon-list
+    homepage: ''
+navigation:
+    todo-menu:
+        label: Todos
+        url: ahorak/todo/todo
+        icon: icon-list

@@ -1,0 +1,12 @@
+list: $/ahorak/todo/models/todo/columns.yaml
+modelClass: Ahorak\Todo\Models\Todo
+title: Todo
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'ahorak/todo/todo/update/:id'

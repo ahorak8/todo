@@ -1,0 +1,10 @@
+name: Todo
+form: $/ahorak/todo/models/todo/fields.yaml
+modelClass: Ahorak\Todo\Models\Todo
+defaultRedirect: ahorak/todo/todo
+create:
+    redirect: 'ahorak/todo/todo/update/:id'
+    redirectClose: ahorak/todo/todo
+update:
+    redirect: ahorak/todo/todo
+    redirectClose: ahorak/todo/todo
