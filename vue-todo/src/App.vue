@@ -1,28 +1,32 @@
+  <!-- Template: -->
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <!-- Calling component here: -->
+    <ToDoList></ToDoList> 
   </div>
 </template>
 
+  <!-- Script - write app here: -->
 <script>
-import HelloWorld from './components/HelloWorld'
+import ToDoList from './components/ToDoList'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ToDoList //Defining component here
   }
 }
 </script>
 
 <style>
-#app {
+
+/*  Styling: */
+/* #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
+} */
 </style>
