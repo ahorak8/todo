@@ -42,3 +42,10 @@ Route::get('api/todos', function(){
         ]);
     });
 // });
+
+Route::post('api/delete-todo', function(Request $req){
+    $data = $req->input(); //Everything that is coming from the vue end, will be stored in this variable
+
+    // Delete data record according to the id
+    Todo::destroy([$data['id']]);
+});

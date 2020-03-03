@@ -3,11 +3,11 @@
         <div class="row">
             <div class="columns large-6">
                 <h2>ToDo ({{ uncompletedTodos.length}})</h2>
-                <todo v-for="todo in uncompletedTodos" :todo="todo" :key="todo.id"></todo>
+                <todo v-for="todo in uncompletedTodos" :todo="todo" :key="todo.id" @delete-todo="deleteTodo(todo)"></todo>
             </div>
                 <div class="columns large-6">
                     <h2>Completed ({{completedTodos.length}})</h2>
-                <todo v-for="todo in completedTodos" :todo="todo" :key="todo.id"></todo>
+                <todo v-for="todo in completedTodos" :todo="todo" :key="todo.id" @delete-todo="deleteTodo(todo)"></todo>
             </div>
         </div>
     </div>
@@ -36,6 +36,22 @@ export default {
                 return todo.status == 0;            // have a status of 0 (uncompleted)
             })
          }
+    },
+
+    methods: {
+        deleteTodo: function(todo){
+            console.log(todo); // Check what todo 
+            console.log("id:", todo.id); // Check id of todo 
+            var todoIndex = this.todos.indexOf(todo);
+
+            console.log("index:", todoIndex); // Check index of todo 
+
+            // We can splice the array to remove that todo from the array:
+            this.todos.splice(todoIndex, 1);
+
+            // Send the id of that item to October and tell it to delete from DB:
+            axios.post('http://todo/api/delete-todo', todo); // sending to route
+        }
     }
 }
 </script>
