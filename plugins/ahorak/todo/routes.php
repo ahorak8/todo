@@ -57,3 +57,16 @@ Route::post('api/toggle-todo', function(Request $req){
     // and update its status according to the status of data we are sending
     Todo::where('id', $data['id'])->update(['status' => $data['status']]); 
 });
+
+Route::post('api/update-todo', function(Request $req){
+    $data = $req->input(); //Everything that is coming from the vue end, will be stored in this variable
+
+    // find todo where id (DB) is equal to $data id
+    // and update its values according to the values of data we are sending
+    Todo::where('id', $data['id'])
+    ->update([
+        'status' => $data['status'],
+        'title' => $data['title'],
+        'description' => $data['description'],
+        ]); 
+});
