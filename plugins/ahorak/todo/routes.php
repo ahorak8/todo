@@ -24,14 +24,21 @@ Route::get('api/todos', function(){
     return $todos;
 });
 
-Route::post('api/add-todo', function(Request $req){
-    $data = $req->input(); //Everything that is coming from the vue end, will be stored in this variable
+// Route::group([
+// 	'prefix'     => 'api/v1',
+// 	'namespace'  => 'Ahorak\Todo\Controllers',
+// 	'middleware' => 'cors'
+// ], function() {
 
-    // Create new to do item on our backend and save to database
-    Todo::create([
-        // Define each of the todo fields, pulling from the data sent 
-        'title' => $data['title'],
-        'description' => $data['description'],
-        'status' => $data['status'],
-    ]);
-});
+    Route::post('api/add-todo', function(Request $req){
+        $data = $req->input(); //Everything that is coming from the vue end, will be stored in this variable
+
+        // Create new to do item on our backend and save to database
+        Todo::create([
+            // Define each of the todo fields, pulling from the data sent 
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'status' => $data['status'],
+        ]);
+    });
+// });

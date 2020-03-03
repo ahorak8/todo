@@ -39,6 +39,9 @@ export default {
             });
 
             this.isCreating = false; // This will close the form after a todo has been created
+
+            this.titleText = ''; // This will reset the titleText value, so that the field is empty again
+            this.descriptionText = '';
         }
     }
 }
