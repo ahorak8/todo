@@ -2,12 +2,12 @@
     <div>
         <div class="row">
             <div class="columns large-6">
-                <h2>ToDo ({{ uncompletedTodos.length}})</h2>
-                <todo v-for="todo in uncompletedTodos" :todo="todo" :key="todo.id" @delete-todo="deleteTodo(todo)"></todo>
+                <h2>To Do ({{ uncompletedTodos.length}})</h2>
+                <todo v-for="todo in uncompletedTodos" :todo="todo" :key="todo.id" @delete-todo="deleteTodo(todo)" @toggle-todo="toggleTodo(todo)"></todo>
             </div>
                 <div class="columns large-6">
                     <h2>Completed ({{completedTodos.length}})</h2>
-                <todo v-for="todo in completedTodos" :todo="todo" :key="todo.id" @delete-todo="deleteTodo(todo)"></todo>
+                <todo v-for="todo in completedTodos" :todo="todo" :key="todo.id" @delete-todo="deleteTodo(todo)" @toggle-todo="toggleTodo(todo)"></todo>
             </div>
         </div>
     </div>
@@ -51,6 +51,15 @@ export default {
 
             // Send the id of that item to October and tell it to delete from DB:
             axios.post('http://todo/api/delete-todo', todo); // sending to route
+        },
+        toggleTodo: function (todo) { 
+            
+            if (todo.status == 1) {
+                todo.status = 0;
+            } else {
+                todo.status = 1;
+            }
+            axios.post('http://todo/api/toggle-todo', todo); // sending to route
         }
     }
 }

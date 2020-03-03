@@ -49,3 +49,11 @@ Route::post('api/delete-todo', function(Request $req){
     // Delete data record according to the id
     Todo::destroy([$data['id']]);
 });
+
+Route::post('api/toggle-todo', function(Request $req){
+    $data = $req->input(); //Everything that is coming from the vue end, will be stored in this variable
+
+    // find todo where id (DB) is equal to $data id
+    // and update its status according to the status of data we are sending
+    Todo::where('id', $data['id'])->update(['status' => $data['status']]); 
+});
